@@ -1,0 +1,73 @@
+name: main_config
+###########################################################
+#                   DATA SETTING                          #
+###########################################################
+# user defined data path
+sampling_rate: 16000
+data:
+    path: "/Users/azam/Desktop/Thesis/speech_quality_assessment/data"  # Azam: Change it based on the root of your project
+    subset:
+            clean_train: "metadata/librispeech_train_dataset.csv"
+            clean_valid: "metadata/vctk_clean_validation.csv"
+
+###########################################################
+#                   MODEL SETTING                         #
+###########################################################
+task: Quality_Estimation
+cos_loss: True
+input_transform: None
+
+VQVAE_params:
+    codebook_size: 2048  # decreased from 2048 # specifies the number of discrete vectors in the codebook
+    codebook_num: 1
+    codebook_dim: 32     # increased from 32
+    orthogonal_reg_weight: 0
+    use_cosine_sim: True
+    ema_update: True
+    learnable_codebook: False
+    stochastic_sample_codes: False
+    sample_codebook_temp: 6
+    straight_through: False
+    reinmax: False
+    kmeans_init: True
+    threshold_ema_dead_code: -1000
+
+###########################################################
+#                  LOSS WEIGHT SETTING                    #
+###########################################################
+lambda_vq_loss: 1.0      # Loss weight of vector quantize loss.
+lambda_stft_loss: 45.0   # Loss weight of stft loss.
+
+###########################################################
+#                  DATA LOADER SETTING                    #
+###########################################################
+batch_size: 64
+batch_length: 80000        # 48000 could correspond to 3 seconds of audio at a 16 kHz sampling rate.
+pin_memory: true            # In this example, setting pin_memory=True ensures that all data loaded into batches is pinned in memory,
+                            # allowing faster transfer to the GPU each time to(device) is called.
+num_workers: 6
+
+###########################################################
+#             OPTIMIZER & SCHEDULER SETTING               #
+###########################################################
+VQVAE_optimizer_type: Adam
+VQVAE_optimizer_params:
+    lr: 1.0e-5
+    betas: [0.5, 0.9]
+    weight_decay: 0.0
+VQVAE_scheduler_type: StepLR
+VQVAE_scheduler_params:
+    step_size: 250      # Generator's scheduler step size.
+    gamma: 1.0
+VQVAE_grad_norm: -1
+
+###########################################################
+#                    INTERVAL SETTING                     #
+###########################################################
+start_steps:                       # Number of steps to start training
+    VQVAE: 0
+AT_training_start_steps: 60000000
+train_max_steps: 1000             # Number of training steps.
+save_interval_steps: 1000         # Interval steps to save checkpoint.
+eval_interval_steps: 100          # Interval steps to evaluate the network.
+log_interval_steps: 100           # Interval steps to record the training log.
