@@ -6,3 +6,11 @@ The approach uses a vector quantization-based architecture with an encoder-quant
 Architecture:
 ![VQScore BiLSTM Architecture](vqscore-bilstm.png)
 
+
+## References
+
+1. **VQScore**: A Vector Quantization-based Speech Quality Assessment Model  
+   https://github.com/JasonSWFu/VQscore/tree/main
+
+2. **Prosodic Features**: Prosodic feature extraction for speech analysis  
+   https://github.com/CeLuigi/prosodic_features
