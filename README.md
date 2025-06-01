@@ -9,8 +9,7 @@ Architecture:
 
 ## References
 
-1. **VQScore**: A Vector Quantization-based Speech Quality Assessment Model  
+1. [**VQScore**](https://github.com/JasonSWFu/VQscore/tree/main) 
    https://github.com/JasonSWFu/VQscore/tree/main
 
-2. **Prosodic Features**: Prosodic feature extraction for speech analysis  
-   https://github.com/CeLuigi/prosodic_features
+2. [**Prosodic Features**](https://github.com/CeLuigi/prosodic_features)
