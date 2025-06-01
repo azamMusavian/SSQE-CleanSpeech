@@ -10,6 +10,5 @@ Architecture:
 ## References
 
 1. [**VQScore**](https://github.com/JasonSWFu/VQscore/tree/main) 
-   https://github.com/JasonSWFu/VQscore/tree/main
 
 2. [**Prosodic Features**](https://github.com/CeLuigi/prosodic_features)
