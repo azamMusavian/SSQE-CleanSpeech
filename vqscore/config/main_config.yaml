@@ -57,7 +57,7 @@ VQVAE_optimizer_params:
     weight_decay: 0.0
 VQVAE_scheduler_type: StepLR
 VQVAE_scheduler_params:
-    step_size: 250      # Generator's scheduler step size.
+    step_size: 200000      # Generator's scheduler step size.
     gamma: 1.0
 VQVAE_grad_norm: -1
 
@@ -67,7 +67,7 @@ VQVAE_grad_norm: -1
 start_steps:                       # Number of steps to start training
     VQVAE: 0
 AT_training_start_steps: 60000000
-train_max_steps: 1000             # Number of training steps.
-save_interval_steps: 1000         # Interval steps to save checkpoint.
-eval_interval_steps: 100          # Interval steps to evaluate the network.
-log_interval_steps: 100           # Interval steps to record the training log.
+train_max_steps: 800000             # Number of training steps.
+save_interval_steps: 100000         # Interval steps to save checkpoint.
+eval_interval_steps: 20000          # Interval steps to evaluate the network.
+log_interval_steps: 20000           # Interval steps to record the training log.
